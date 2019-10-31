@@ -4,7 +4,7 @@ PACKAGE_NAME=$(basename $(ls packaging/debian/*dsc.obs) | cut -d '.' -f1)
 
 #Update control file
 printf "Update control file... "
-if [ $(grep -q "# for the legacy-named metapackage to group the common" packaging/debian/control) ]
+if [ ! $(grep -q "# for the legacy-named metapackage to group the common" packaging/debian/control) ]
 then
     printf "Already done\n"
 else
@@ -80,13 +80,16 @@ EOF
 LAST_ECPP="ECPPFILES"
 for file in $(ls src/rest_*.ecpp 2> /dev/null)
 do
-    echo "  ${file} \\" >> src/Makemodule-local.am
-    LAST_ECPP=${file}
+    ECPP=$(basename ${file})
+    echo "  ${ECPP} \\" >> src/Makemodule-local.am
+    LAST_ECPP=${ECPP}
 done
+
+PACKAGE_NAME_WITH_UNDERSCORE=$(echo "${PACKAGE_NAME}" | sed 's/-/_/g')
 
 cat >> src/Makemodule-local.am <<EOF
 
-TNTLIB_BASENAME=lib${PACKAGE_NAME}
+TNTLIB_BASENAME=lib${PACKAGE_NAME_WITH_UNDERSCORE}
 TNTLIB_DIRNAME=\$(prefix)/lib/bios
 
 ECPPCCFILES = \$(ECPPFILES:.ecpp=.cc)
@@ -113,7 +116,6 @@ install-exec-hook:
 	/bin/rm -f \$(DESTDIR)\$(libdir)/\$(TNTLIB_BASENAME).so
 	cd \$(DESTDIR)\$(TNTLIB_DIRNAME) && \\
 	    ln -fs "\`ls -1 \$(TNTLIB_BASENAME).so.* | tail -1\`" \$(TNTLIB_BASENAME).so
-
 EOF
 
 sed -i "s#${LAST_ECPP} \\\#${LAST_ECPP}#" src/Makemodule-local.am
