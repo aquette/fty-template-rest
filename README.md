@@ -1,25 +1,36 @@
 # fty-template-rest
 
-This is just a template for rest servelet repository 
+This is just a template for REST API servlet repository in a 42ITy ecosystem.
 
 ## How to create your agent
 
-To create your rest servelet, you have to specify this template when creating a repo on gitbub.
+To create your rest servlet, you have to specify this template when
+creating a repository on github.
 
-Then you have to update the project.xml file and run from the local clone of your repo the tools ProjectXML from the repo FTY.
-You will need 2 terminal. 1. for launching the update, the other for running the script before to analyse the diff.
+Then you have to update the project.xml and license.xml files, and
+`git mv` the customized from packaging/debian/*.install files (originally
+named for fty-template component). Then run from the local clone of
+your repository the tool ProjectXML from the repo FTY:
+
+You will need 2 terminals: one for launching the update, the other
+for running the additional REST preparation script before you analyse
+the diff.
 
 ```bash
-../FTY/ProjectXML -A --kill-cmake
+../FTY/ProjectXML -A
 ```
-Before to continue with the difftool, open an new terminal and run
+
+Before you continue with the git difftool, open a new terminal and run:
 
 ```bash
 ./create_rest_package.sh
 ```
-Then you can continue with the difftool. Be carrefull, lot of file need to be updated with the difftool. You will find a note on the top of each such as "# Note: this file is customized..."
+Then you can continue with the git difftool.
+Be careful, lot of files need to be updated with the difftool and not
+just overwritten with generated contents. You will find a note on the
+top of each such as "# Note: this file is customized..."
 
-Then you can add all the file needed: Example with generation of the template:
+Then you can add all the files needed: Example with generation of the template:
 
 ```bash
 	doc/fty-template-rest.adoc
@@ -39,4 +50,8 @@ Then you can add all the file needed: Example with generation of the template:
 Do not forget to rename src/40_template-rest.xml and update it.
 Do not forget to update the file install.xml
 
-Each time you run ../FTY/ProjectXML -A --kill-cmake do not forget to run also ./create_rest_package.sh
+Each time you run ../FTY/ProjectXML -A do not forget to run also
+./create_rest_package.sh
+
+See existing components, such as fty-example, for recommended content and
+structure of the README of a realistic codebase.

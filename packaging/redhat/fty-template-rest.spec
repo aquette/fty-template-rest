@@ -1,7 +1,10 @@
 #
-#    fty-srr-rest - Save, restore and reset REST API
+#    fty-template-rest - Template REST API
 #
-#    Copyright (C) 2014 - 2018 Eaton
+#   NOTE: This file was customized after generation,
+#   take care to keep this during updates.
+#
+#    Copyright (C) 2014 - 2019 Eaton
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -28,10 +31,10 @@
 %else
 %define DRAFTS no
 %endif
-Name:           fty-srr-rest
+Name:           fty-template-rest
 Version:        1.0.0
 Release:        1
-Summary:        save, restore and reset rest api
+Summary:        template rest api
 License:        GPL-2.0+
 URL:            https://42ity.org
 Source0:        %{name}-%{version}.tar.gz
@@ -65,26 +68,28 @@ BuildRequires:  fty-common-dto-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-fty-srr-rest save, restore and reset rest api.
+fty-template-rest template rest api.
 
-%package -n libfty_srr_rest1
+%package -n libfty_template_rest1
 Group:          System/Libraries
-Summary:        save, restore and reset rest api shared library
+Summary:        template rest api shared library
 
-%description -n libfty_srr_rest1
-This package contains shared library for fty-srr-rest: save, restore and reset rest api
+%description -n libfty_template_rest1
+This package contains shared library for fty-template-rest: template rest api
 
-%post -n libfty_srr_rest1 -p /sbin/ldconfig
-%postun -n libfty_srr_rest1 -p /sbin/ldconfig
+%post -n libfty_template_rest1 -p /sbin/ldconfig
+%postun -n libfty_template_rest1 -p /sbin/ldconfig
 
-%files -n libfty_srr_rest1
+# Note: the .so file is delivered as part of main package for tntnet to find it
+%files -n libfty_template_rest1
 %defattr(-,root,root)
-%{_libdir}/libfty_srr_rest.so.*
+%{_libdir}/libfty_template_rest.so.*
+%{_libdir}/libfty_template_rest.so
 
 %package devel
-Summary:        save, restore and reset rest api
+Summary:        template rest api
 Group:          System/Libraries
-Requires:       libfty_srr_rest1 = %{version}
+Requires:       libfty_template_rest1 = %{version}
 Requires:       cxxtools-devel
 Requires:       log4cplus-devel
 Requires:       fty-common-logging-devel
@@ -102,14 +107,15 @@ Requires:       fty-common-messagebus-devel
 Requires:       fty-common-dto-devel
 
 %description devel
-save, restore and reset rest api development tools
-This package contains development files for fty-srr-rest: save, restore and reset rest api
+template rest api development tools
+This package contains development files for fty-template-rest: template rest api
 
+# Note: the .so file is delivered as part of main package for tntnet to find it
 %files devel
 %defattr(-,root,root)
 %{_includedir}/*
-%{_libdir}/libfty_srr_rest.so
-%{_libdir}/pkgconfig/libfty_srr_rest.pc
+###%{_libdir}/libfty_template_rest.so
+%{_libdir}/pkgconfig/libfty_template_rest.pc
 %{_mandir}/man3/*
 %{_mandir}/man7/*
 
