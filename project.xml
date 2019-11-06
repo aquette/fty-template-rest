@@ -208,7 +208,7 @@
          At least one non-private and stable class should be declared,
          in order to generate lib* packaging metadata with zproject.
          It is OPTIONALLY included in build, so should be a bogus file
-         with no consequences if it's missing - enter stub_security_wallet_rest.
+         with no consequences if it's missing - enter stub_template_rest.
      -->
     <class name = "stub_template_rest" stable = "1">REST API for Template component</class>
 
