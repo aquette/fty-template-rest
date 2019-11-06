@@ -8,24 +8,26 @@ To create your rest servlet, you have to specify this template when
 creating a repository on github.
 
 Then you have to update the project.xml and license.xml files, and
-`git mv` the customized from packaging/debian/*.install files (originally
-named for fty-template component). Then run from the local clone of
-your repository the tool ProjectXML from the repo FTY:
+run from the local clone of your repository the tool ProjectXML from
+the repo FTY.
 
 You will need 2 terminals: one for launching the update, the other
 for running the additional REST preparation script before you analyse
-the diff.
+the diff back in the first one.
 
 ```bash
 ../FTY/ProjectXML -A
 ```
 
-Before you continue with the git difftool, open a new terminal and run:
+Before you continue with the git difftool, open the second terminal
+and run:
 
 ```bash
 ./create_rest_package.sh
 ```
+
 Then you can continue with the git difftool.
+
 Be careful, lot of files need to be updated with the difftool and not
 just overwritten with generated contents. You will find a note on the
 top of each such as "# Note: this file is customized..."
