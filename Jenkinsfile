@@ -1,7 +1,7 @@
 /*
     fty-template-rest - Template REST API
 
-    Copyright (C) 2014 - 2018 Eaton
+    Copyright (C) 2014 - 2019 Eaton
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ pipeline {
             description: 'If the deployment is done, should THIS job wait for it to complete and include its success or failure as the build result (true), or should it schedule the job and exit quickly to free up the executor (false)',
             name: 'DEPLOY_REPORT_RESULT')
         booleanParam (
-            defaultValue: false,
+            defaultValue: true,
             description: 'Attempt stable build without DRAFT API in this run?',
             name: 'DO_BUILD_WITHOUT_DRAFT_API')
         booleanParam (

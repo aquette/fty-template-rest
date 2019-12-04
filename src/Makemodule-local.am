@@ -6,9 +6,9 @@ ECPPFLAGS = --nolog
 ECPPFLAGS_CPP = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_builddir)/src -I$(top_srcdir)/src
 
 ECPPFILES= \
-  src/rest_template_GET.ecpp
+  rest_template_GET.ecpp
 
-TNTLIB_BASENAME=libfty-template-rest
+TNTLIB_BASENAME=libfty_template_rest
 TNTLIB_DIRNAME=$(prefix)/lib/bios
 
 ECPPCCFILES = $(ECPPFILES:.ecpp=.cc)

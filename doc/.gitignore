@@ -11,6 +11,8 @@
 *.xml7
 
 # Ignore the source doc texts generated from program sources
+stub_template_rest.txt
+stub_template_rest.doc
 
 # Make sure to track the manually maintained project description
 !*.adoc

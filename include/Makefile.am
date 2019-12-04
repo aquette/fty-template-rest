@@ -4,6 +4,7 @@
 ################################################################################
 nobase_include_HEADERS = \
     fty-template-rest.h \
+    stub_template_rest.h \
     fty_template_rest_library.h
 
 

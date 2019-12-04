@@ -1,0 +1,4 @@
+   fty-template-rest -> tntdb;
+   fty-template-rest -> cxxtools;
+   fty-template-rest -> fty-common-logging;
+   fty-template-rest -> fty-common-rest;
